@@ -3,27 +3,29 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { IUser, UserResponse } from '../models/user.interface';
+import { IUser, ApiResponse } from '../models/user.interface';
+import { NormalizeService } from './normalize.service';
+import { Repo } from '../models/repo.interface';
 
 @Injectable()
 export class UserService {
-  private apiUrl = 'https://api.github.com/search/';
+  private apiUrl = 'https://api.github.com';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private normalizeService: NormalizeService) {}
 
   getUser(param: string): Observable<IUser> {
-    return this.http.get<UserResponse>(`${this.apiUrl}users?q=${param}`).pipe(
+    return this.http.get<ApiResponse>(`${this.apiUrl}/search/users?q=${param}`).pipe(
       map(data => {
-        return {
-          name: data.items[0].login,
-          avatar: data.items[0].avatar_url,
-          link: data.items[0].html_url
-        };
+        return this.normalizeService.convertUser(data);
       })
     );
   }
 
-  getRepos(param: string): Observable<any> {
-    return this.http.get<UserResponse>(`${this.apiUrl}repositories?q=${param}`);
+  getRepos(param: string): Observable<Repo[]> {
+    return this.http.get<ApiResponse>(`${this.apiUrl}/users/${param}/repos`).pipe(
+      map( data => {
+        return this.normalizeService.convertRepos(data);
+      } )
+    );
   }
 }

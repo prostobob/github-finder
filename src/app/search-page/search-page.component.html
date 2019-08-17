@@ -13,7 +13,7 @@
   <div class="user">
     <app-user [user]="user$ | async"></app-user>
   </div>
-  <div *ngIf="user$ | async">
-    <app-repo-list [user]="user$ | async"></app-repo-list>
+  <div>
+    <app-repo-list [repos]="repos$ | async"></app-repo-list>
   </div>
 </div>

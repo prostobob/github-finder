@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { IUser } from '../models/user.interface';
+import { Repo } from '../models/repo.interface';
 
 @Component({
   selector: 'app-repo-list',
@@ -9,11 +9,12 @@ import { IUser } from '../models/user.interface';
 })
 export class RepoListComponent implements OnInit {
 
-  @Input() user: IUser;
+  @Input() repos: Repo[];
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

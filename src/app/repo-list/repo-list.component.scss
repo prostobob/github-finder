@@ -1,0 +1,12 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .item {
+    width: 80%;
+  }
+}
+
+.content {
+  width: 100%;
+}

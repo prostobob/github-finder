@@ -13,6 +13,8 @@ import { UserService } from './service/user.service';
 import { MaterialModule } from './material.module';
 import { UserComponent } from './user/user.component';
 import { RepoListComponent } from './repo-list/repo-list.component';
+import { NormalizeService } from './service/normalize.service';
+import { RepoItemComponent } from './repo-item/repo-item.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { RepoListComponent } from './repo-list/repo-list.component';
     SearchPageComponent,
     NotFoundComponent,
     UserComponent,
-    RepoListComponent
+    RepoListComponent,
+    RepoItemComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { RepoListComponent } from './repo-list/repo-list.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, NormalizeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

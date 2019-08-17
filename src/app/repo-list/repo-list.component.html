@@ -1,1 +1,9 @@
-<p>repo-list works!</p>
+<div class="wrap">
+  <mat-list>
+    <mat-list-item class="item" *ngFor="let item of repos">
+      <div class="content">
+        <app-repo-item [item]="item"></app-repo-item>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>

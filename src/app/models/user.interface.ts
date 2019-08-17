@@ -4,7 +4,7 @@ export interface IUser {
     link: string;
 }
 
-export interface UserResponse {
+export interface ApiResponse {
     incomplete_results: boolean;
     items: any[];
     total_count: number;
