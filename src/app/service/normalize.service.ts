@@ -6,7 +6,6 @@ import { Repo } from '../models/repo.interface';
 @Injectable()
 export class NormalizeService {
   convertUser(res: ApiResponse): IUser {
-    console.log(res);
     const user = {
       name: res.items[0].login,
       avatar: res.items[0].avatar_url,
